@@ -43,6 +43,13 @@ void setup() {
   f = 0;
   g = 0;
   
+  //super background ints
+  h = 0;
+  i = 0;
+  j = 0;
+  k = 0;
+  l = 0;
+  
 }
 
 
@@ -57,7 +64,104 @@ void draw() {
   e = e + 3;
   f = f + 3;
   g = g + 3;
+  h = h + 1;
+  i = i + 1;
+  j = j + 1;
+  k = k + 1;
+  l = l + 1;
   background(44, 65, 93);
+  
+  //super background layer
+  
+  fill(37, 49, 67);
+  stroke(37, 49, 67);
+  rect(0, 550, 800, 100);
+  rect(0, 150, 800, 100);
+  
+  pushMatrix();
+  translate(h, 0);
+  
+  triangle(0, 600, 200, 400, 400, 600); 
+  rect(130, 290, 140, 300);
+  triangle(0, 200, 200, 400, 400, 200);
+  
+  if(h > 900) {
+    h = -1100;
+  }
+  
+  popMatrix();
+  
+  pushMatrix();
+  translate(i, 0);
+  
+  triangle(700, 700, 900, 400, 1100, 700); 
+  rect(830, 290, 140, 300);
+  triangle(700, 100, 900, 400, 1100, 100);
+  
+  if(i > 900) {
+    i = -1100;
+  }
+  popMatrix();
+  
+  pushMatrix();
+  translate(j, 0);
+  
+  triangle(-400, 700, -600, 400, -800, 700); 
+  rect(-670, 290, 140, 300);
+  triangle(-400, 100, -600, 400, -800, 100);
+  
+  if(j > 1600) {
+    j = -400;
+  }
+  popMatrix();
+  
+  pushMatrix();
+  translate(k, 0);
+  
+  triangle(0, 250, 50, 350, 100, 250); 
+  triangle(175, 250, 225, 375, 300, 250); 
+  triangle(400, 250, 450, 400, 500, 250); 
+  triangle(575, 250, 625, 330, 675, 250);
+  triangle(700, 250, 750, 350, 800, 250);
+  
+  triangle(0, 550, 50, 400, 100, 550); 
+  triangle(200, 550, 250, 425, 325, 550); 
+  triangle(400, 550, 450, 450, 500, 550); 
+  triangle(100, 550, 650, 485, 800, 550);
+  triangle(500, 550, 550, 465, 600, 550);
+  triangle(700, 550, 750, 470, 800, 550);
+  
+  if(k > 800) {
+    k = -800;
+  }
+  popMatrix();
+  
+  pushMatrix();
+  translate(l, 0);
+  
+  triangle(800, 250, 850, 350, 900, 250); 
+  triangle(975, 250, 1025, 375, 1100, 250); 
+  triangle(1200, 250, 1250, 400, 1300, 250); 
+  triangle(1375, 250, 1425, 330, 1475, 250);
+  triangle(1500, 250, 1550, 350, 1600, 250);
+     
+  triangle(800, 550, 850, 470, 900, 550); 
+  triangle(950, 550, 1025, 425, 1150, 550); 
+  triangle(1200, 550, 1250, 475, 1325, 550); 
+  triangle(1375, 550, 1425, 450, 1475, 550);
+  triangle(1500, 550, 1550, 450, 1600, 550);
+  
+  if(l > 0) {
+    l = -1600;
+  }
+  popMatrix();
+  image(img, 360, 370);
+  
+  //water 2
+ 
+  fill(83, 139, 216);
+  stroke(83, 139, 216);
+  rect(0, 580, 800, 100);
   
   //background layer
   fill(20, 34, 54);
@@ -144,7 +248,7 @@ void draw() {
   popMatrix();
   image(img, 360, 370);
   
-  //water
+  //water 2
  
   fill(83, 139, 216);
   stroke(83, 139, 216);
@@ -164,7 +268,7 @@ void draw() {
   rect(130, 290, 140, 300);
   triangle(0, 100, 200, 400, 400, 100);
   
-  if(x == 900) {
+  if(x > 900) {
     x = -1100;
   }
   
@@ -177,7 +281,7 @@ void draw() {
   rect(830, 290, 140, 300);
   triangle(700, 100, 900, 400, 1100, 100);
   
-  if(y == 900) {
+  if(y > 900) {
     y = -1100;
   }
   popMatrix();
@@ -189,7 +293,7 @@ void draw() {
   rect(-670, 290, 140, 300);
   triangle(-400, 100, -600, 400, -800, 100);
   
-  if(z == 1600) {
+  if(z > 1600) {
     z = -400;
   }
   popMatrix();
@@ -209,7 +313,7 @@ void draw() {
   triangle(575, 700, 625, 650, 675, 700);
   triangle(700, 700, 750, 650, 800, 700);
   
-  if(a == 800) {
+  if(a > 800) {
     a = -800;
   }
   popMatrix();
@@ -235,7 +339,7 @@ void draw() {
   }
   popMatrix();
   image(img, 360, 370);
-  
+    
 }
 
   //foreground layer
