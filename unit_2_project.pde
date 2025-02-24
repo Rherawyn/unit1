@@ -29,6 +29,10 @@ PImage img;
 void setup() {
   size(800, 800);
    img = loadImage("Knight.png");
+  //foreground int
+  m = 0;
+  n = 0;
+   
   // midground ints
   x = 0;
   y = 0;
@@ -54,6 +58,8 @@ void setup() {
 
 
 void draw() {
+  m = m + 7;
+  n = n + 7;
   x = x + 5;
   y = y + 5;
   z = z + 5;
@@ -69,6 +75,7 @@ void draw() {
   j = j + 1;
   k = k + 1;
   l = l + 1;
+
   background(44, 65, 93);
   
   //super background layer
@@ -339,7 +346,53 @@ void draw() {
   }
   popMatrix();
   image(img, 360, 370);
+  
+  //foreground layer
+  
+  fill(15, 16, 54);
+  stroke(15, 16, 54);
+  
+  pushMatrix();
+  translate(m, 0);
+  
+  triangle(0, 0, 50, 50, 100, 0); 
+  triangle(175, 0, 225, 75, 300, 0); 
+  triangle(400, 0, 450, 100, 500, 0); 
+  triangle(575, 0, 625, 30, 675, 0);
+  triangle(700, 0, 750, 50, 800, 0);
+     
+  triangle(0, 800, 50, 770, 100, 800); 
+  triangle(150, 800, 225, 725, 350, 800); 
+  triangle(400, 800, 450, 775, 525, 800); 
+  triangle(575, 800, 625, 750, 675, 800);
+  triangle(700, 800, 750, 750, 800, 800);
+  
+  if(m > 800) {
+    m = -800;
+  }
+  popMatrix();
+  
+  pushMatrix();
+  translate(n, 0);
+  
+  triangle(800, 0, 850, 50, 900, 0); 
+  triangle(975, 0, 1025, 75, 1100, 0); 
+  triangle(1200, 0, 1250, 100, 1300, 0); 
+  triangle(1375, 0, 1425, 30, 1475, 0);
+  triangle(1500, 0, 1550, 50, 1600, 0);
+  
+  triangle(800, 800, 850, 700, 900, 800); 
+  triangle(1000, 800, 1050, 725, 1125, 800); 
+  triangle(1200, 800, 1250, 750, 1300, 800); 
+  triangle(900, 800, 1450, 785, 1600, 800);
+  triangle(1300, 800, 1350, 765, 1400, 800);
+  triangle(1500, 800, 1550, 770, 1600, 800);
+  
+  if(n > 0) {
+    n = -1600;
+  }
+  popMatrix();
     
 }
-
-  //foreground layer
+  
+  
