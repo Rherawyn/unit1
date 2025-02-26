@@ -4,7 +4,6 @@
 
 
 //palletes
-color background = #D7C3E5;
 color magenta    = #F253F2;
 color violet     = #7B0AFF;
 color purple     = #9D0DFF;
@@ -15,6 +14,8 @@ color blue       = #364BFF;
 color selected   = #9D67C1;
 
 //variable for color selection
+float sliderx;
+float shade;
 color selectedcolor;
 
 void setup() {
@@ -22,10 +23,12 @@ void setup() {
   stroke(darkpurple);
   strokeWeight(5);
   selectedcolor = purple;
+  sliderx = 500;
+  shade = 0;
 }
 
 void draw() {
-  background(background);
+  background(shade, 195, 255);//215, 195, 229
   
   //buttons
   
@@ -57,7 +60,16 @@ void draw() {
   //indicator
   stroke(darkpurple);
   fill(selectedcolor);
-  square(300, 100, 400);
+  square(300, 150, 400);
+  
+  //slider
+  stroke(0);
+  line(sliderx, 75, 700, 75);
+  fill(255, 18, 93);
+  stroke(255, 18, 93);
+  line(300, 75, sliderx, 75);
+  circle(sliderx, 75, 50);
+ 
 } // end of draw ========================================
 
 void tactile(int x, int y, int r) {
@@ -101,4 +113,18 @@ void mouseReleased() {
    selectedcolor = blue;
   }
   
+  controlslider();
+  
 } 
+
+void controlslider() {
+  if (mouseX > 300 && mouseX < 700 && mouseY > 50 && mouseY < 100) {
+   sliderx = mouseX; 
+  }
+  
+  shade = map(sliderx, 300, 700, 0, 255);
+}
+
+void mouseDragged() {
+  controlslider();
+}
