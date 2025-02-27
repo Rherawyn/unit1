@@ -1,6 +1,6 @@
 // Gabriel Altshuler
-// 2-4, 2025
-//unit 3 checkpoint A
+//unit 2-4, 2025
+// unit three project
 
 
 //palletes
