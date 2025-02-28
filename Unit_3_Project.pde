@@ -14,21 +14,45 @@ color blue       = #364BFF;
 color selected   = #9D67C1;
 
 //variable for color selection
-float sliderx;
-float shade;
+float sliderR;
+float sliderG;
+float sliderB;
+float thick;
+float shadeB;
+float shadeG;
+float shadeR;
+float thickstroke;
 color selectedcolor;
 
 void setup() {
-  size(1000, 600);
+  size(1200, 800);
   stroke(darkpurple);
   strokeWeight(5);
   selectedcolor = purple;
-  sliderx = 600;
-  shade = 200;
+  sliderB = 450;
+  sliderG = 450;
+  sliderR = 450;
+  thick = 400;
+  thickstroke = 25;
+  shadeB = 0;
+  shadeG = 0;
+  shadeR = 0;
+  fill(255);
+  rect(0, 0, 1200, 800);
 }
 
+//draw ====================================================
+
 void draw() {
-  background(shade, 195, 255);//215, 195, 229
+  
+  //canvas
+  
+  fill(215, 195, 255);
+  stroke(215, 195, 255);
+  rect(0, 0, 1200, 100);//215, 195, 229
+  rect(0, 0, 80, 800);
+  rect(0, 650, 1200, 150);
+  rect(1120, 0, 80, 800);
   
   //buttons
   
@@ -57,29 +81,59 @@ void draw() {
   fill(blue);
   rect(800,450,150,100);
   
-  //indicator
-  stroke(darkpurple);
-  fill(selectedcolor);
-  square(300, 150, 400);
-  
-  //slider
+  //color indicator
   stroke(0);
-  line(sliderx, 75, 700, 75);
+  fill(shadeR, shadeG, shadeB);
+  square(800, 675, 100);
+  
+  //strokeweight indicator
+  
+  stroke(0);
+  fill(shadeR, shadeG, shadeB);
+  circle(40, 200, thickstroke);
+  
+  //color sliders
+  stroke(0);
+  line(sliderB, 775, 750, 775);
   fill(255, 18, 93);
   stroke(255, 18, 93);
-  line(300, 75, sliderx, 75);
-  circle(sliderx, 75, 50);
+  line(450, 775, sliderB, 775);
+  circle(sliderB, 775, 30);
+  
+  stroke(0);
+  line(sliderG, 725, 750, 725);
+  fill(255, 18, 93);
+  stroke(255, 18, 93);
+  line(450, 725, sliderG, 725);
+  circle(sliderG, 725, 30);
+  
+  stroke(0);
+  line(sliderR, 675, 750, 675);
+  fill(255, 18, 93);
+  stroke(255, 18, 93);
+  line(450, 675, sliderR, 675);
+  circle(sliderR, 675, 30);
+  
+  //thickness slider
+  stroke(0);
+  line(40, 250, 40, thick);
+  fill(255, 18, 93);
+  stroke(255, 18, 93);
+  line(40, thick, 40, 550);
+  circle(40, thick, 30);
  
-} // end of draw ========================================
+} // end of draw ================================================
 
+//tactile ========================================================
 void tactile(int x, int y, int r) {
   if (dist(x,y,mouseX,mouseY) < r) {
    stroke(selected);
   } else {
    stroke(darkpurple); 
   }
-}// end of tactile ======================================
+}// end of tactile ================================================
 
+//rectangle ======================================================
 void rectangle(int a, int b, int c, int d) {
   if (mouseX > a && mouseX < b && mouseY > c && mouseY < d) {
    stroke(selected);
@@ -88,6 +142,7 @@ void rectangle(int a, int b, int c, int d) {
   }
 }//end of rectangle
 
+//mouse click ====================================================
 void mouseReleased() {
   if (dist(100,100,mouseX,mouseY) < 50) {
     selectedcolor = magenta;
@@ -115,16 +170,42 @@ void mouseReleased() {
   
   controlslider();
   
-} 
+} //end of mouse click =================================================
+
+//slider stuff ========================================================
 
 void controlslider() {
-  if (mouseX > 300 && mouseX < 700 && mouseY > 50 && mouseY < 100) {
-   sliderx = mouseX; 
+  if (mouseX > 450 && mouseX < 750 && mouseY > 750 && mouseY < 800) {
+   sliderB = mouseX; 
   }
   
-  shade = map(sliderx, 300, 700, 0, 255);
+  if (mouseX > 450 && mouseX < 750 && mouseY > 710 && mouseY < 740) {
+   sliderG = mouseX; 
+  }
+  
+  if (mouseX > 450 && mouseX < 750 && mouseY > 650 && mouseY < 700) {
+   sliderR = mouseX; 
+  }
+  
+  if (mouseX > 25 && mouseX < 55 && mouseY > 250 && mouseY < 550) {
+   thick = mouseY; 
+  }
+  
+  shadeB = map(sliderB, 450, 750, 0, 255);
+  
+  shadeG = map(sliderG, 450, 750, 0, 255);
+  
+  shadeR = map(sliderR, 450, 750, 0, 255);
+  
+  thickstroke = map(thick, 250, 550, 50, 0);
 }
 
 void mouseDragged() {
+  
+  stroke(shadeR, shadeG, shadeB);
+  strokeWeight(thickstroke);
+  line(pmouseX, pmouseY, mouseX, mouseY);
+  strokeWeight(5);
+  
   controlslider();
-}
+} // end of slider stuff ==================================================
